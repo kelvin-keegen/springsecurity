@@ -18,8 +18,17 @@ import java.util.Collections;
 @EqualsAndHashCode
 public class AppUser implements UserDetails {
 
+    @SequenceGenerator(
+            name = "profiles_sequence",
+            sequenceName = "profiles_sequence",
+            allocationSize = 1
+    )
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "profiles_sequence"
+    )
     private Long id;
     private String firstName;
     private String lastName;
